@@ -60,6 +60,11 @@ class MainPage(BasePage):
         answer_question = self.find_element(locator).text
         return answer_question
 
+    @allure.title('Проверка вопроса')
+    def check_question(self,  question, answer):
+        self.click_on_question(question)
+        return self.get_answer(answer)
+
     @allure.step('Нажимаем на логотип Яндекс')
     def click_on_ya_logo(self):
         button_ya_logo = self.find_element(LocatorsMainPage.locator_yandex_logo)

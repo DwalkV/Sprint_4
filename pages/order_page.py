@@ -1,7 +1,17 @@
-
+from dataclasses import dataclass
 from selenium.webdriver.common.by import By
 import allure
 from pages.base_page import BasePage
+
+@dataclass
+class Registrations():
+    name: str
+    surname: str
+    address: str
+    phone: str
+
+registration_data_1 = Registrations('Дарья', 'Волк', 'На Луну', '+79112221111')
+registration_data_2 = Registrations('Крокодил', 'Гена', 'В лес', '+79102120000')
 
 class LocatorOrderPage:
     locator_name_field = [By.XPATH, ".//input[@placeholder='* Имя']"]
@@ -36,7 +46,7 @@ class OrderPage(BasePage):
     def set_surname(self, surname):
         surname_field = self.find_element(LocatorOrderPage.locator_surname_field)
         surname_field.send_keys(surname)
-        return  surname_field
+        return surname_field
 
     def set_address(self, address):
         address_field = self.find_element(LocatorOrderPage.locator_address_field)
@@ -49,11 +59,11 @@ class OrderPage(BasePage):
         return phone_field
 
     @allure.step('Вводим данные регистрации')
-    def registration(self, name, surname, address,  phone):
-        self.set_name(name)
-        self.set_surname(surname)
-        self.set_address(address)
-        self.set_phone(phone)
+    def registration(self, Registrations):
+        self.set_name(Registrations.name)
+        self.set_surname(Registrations.surname)
+        self.set_address(Registrations.address)
+        self.set_phone(Registrations.phone)
 
     @allure.step('Нажимаем кнопку «Далее»')
     def click_button_next(self):
@@ -104,3 +114,4 @@ class OrderPage(BasePage):
     def click_on_scooter_logo(self):
         scooter_logo = self.find_element(LocatorOrderPage.locator_scooter_logo)
         scooter_logo.click()
+

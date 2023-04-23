@@ -15,13 +15,12 @@ answers = [
 @allure.story('Проверка вопросов-ответов')
 class TestQuestion:
 
+
     @allure.title('Проверка вопроса о цене')
     def test_question_price(self, driver):
         main_page = MainPage(driver)
         main_page.go_to_site()
-        main_page.click_on_question(LocatorsMainPage.locator_question_price)
-        assert main_page.get_answer(LocatorsMainPage.locator_answer_price) == answers[0]
-
+        assert main_page.check_question(LocatorsMainPage.locator_question_price, LocatorsMainPage.locator_answer_price) == answers[0]
     @allure.title('Проверка вопроса о нескольких самокатах')
     def test_question_few_scooter(self, driver):
         main_page = MainPage(driver)
