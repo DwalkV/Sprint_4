@@ -17,7 +17,6 @@ class LocatorOrderPage:
     locator_date_order = (By.XPATH, ".//input[@placeholder='* Когда привезти самокат']")
     locator_calendar_22 = (By.XPATH, ".//div[text()='22']")
     locator_calendar_25 = (By.XPATH, ".//div[text()='25']")
-
     locator_click_period = (By.XPATH, ".//div[text()='* Срок аренды']")
     locator_period_two = (By.XPATH, ".//div[text()='двое суток']")
     locator_period_three = (By.XPATH, ".//div[text()='трое суток']")
@@ -33,6 +32,7 @@ class OrderPage(BasePage):
         name_field = self.find_element(LocatorOrderPage.locator_name_field)
         name_field.send_keys(name)
         return name_field
+
     def set_surname(self, surname):
         surname_field = self.find_element(LocatorOrderPage.locator_surname_field)
         surname_field.send_keys(surname)
@@ -54,7 +54,6 @@ class OrderPage(BasePage):
         self.set_surname(surname)
         self.set_address(address)
         self.set_phone(phone)
-
 
     @allure.step('Нажимаем кнопку «Далее»')
     def click_button_next(self):
@@ -100,7 +99,6 @@ class OrderPage(BasePage):
     def get_order_status(self):
         order_status = self.find_element(LocatorOrderPage.locator_check_status).text
         return order_status
-
 
     @allure.step('Нажимаем на логотип «Самокат»')
     def click_on_scooter_logo(self):

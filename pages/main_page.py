@@ -32,7 +32,6 @@ class LocatorsMainPage:
     locator_question_county = (By.XPATH, ".//*[@id='accordion__heading-7']")
     locator_answer_county = (By.XPATH, ".//*[@id='accordion__panel-7']")
 
-
 class MainPage(BasePage):
 
     @allure.step('Нажимаем «Заказать» в шапке профиля')
@@ -40,7 +39,7 @@ class MainPage(BasePage):
         button_order_header = self.find_element(LocatorsMainPage.locator_button_order_header)
         button_order_header.click()
 
-    @allure.step('Нажимаем «Заказать» в внизу страницы')
+    @allure.step('Нажимаем «Заказать» внизу страницы')
     def click_on_button_order_middle(self):
         button_order_middle = self.find_element(LocatorsMainPage.locator_button_order_middle)
         self.scroll(button_order_middle)
@@ -50,95 +49,16 @@ class MainPage(BasePage):
         value_for_check_main_page = self.find_element(LocatorsMainPage.locator_check_main_page).text
         return value_for_check_main_page
 
-    @allure.step('Нажимаем на вопрос о цене')
-    def click_on_question_price(self):
-        question_price_click = self.find_element(LocatorsMainPage.locator_question_price)
-        self.scroll(question_price_click)
-        question_price_click.click()
+    @allure.step('Нажимаем на вопрос')
+    def click_on_question(self, locator):
+        question_click = self.find_element(locator)
+        self.scroll(question_click)
+        question_click.click()
 
     @allure.step('Проверяем текст ответа')
-    def get_answer_question_price(self):
-        answer_question_price = self.find_element(LocatorsMainPage.locator_answer_price).text
-        return answer_question_price
-
-    @allure.step('Нажимаем на вопрос о нескольких самокатах')
-    def click_on_question_few_scooter(self):
-        question_few_scooter_click = self.find_element(LocatorsMainPage.locator_question_few_scooter)
-        self.scroll(question_few_scooter_click)
-        question_few_scooter_click.click()
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_few_scooter(self):
-        answer_question_few_scooter = self.find_element(LocatorsMainPage.locator_answer_few_scooter).text
-        return answer_question_few_scooter
-
-    @allure.step('Нажимаем на вопрос о сроках аренды')
-    def click_on_question_rental_period(self):
-        question_rental_period_click = self.find_element(LocatorsMainPage.locator_question_rental_period)
-        self.scroll(question_rental_period_click)
-        question_rental_period_click.click()
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_rental_period(self):
-        answer_question_rental_period = self.find_element(LocatorsMainPage.locator_answer_rental_period).text
-        return answer_question_rental_period
-
-
-    @allure.step('Нажимаем на вопрос о заказе на сегодня')
-    def click_on_question_today_order(self):
-        question_today_order_click = self.find_element(LocatorsMainPage.locator_question_today_order)
-        self.scroll(question_today_order_click)
-        question_today_order_click.click()
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_today_order(self):
-        answer_question_today_order = self.find_element(LocatorsMainPage.locator_answer_today_order).text
-        return answer_question_today_order
-
-    @allure.step('Нажимаем на вопрос о смене срока аренды')
-    def click_on_question_change_period(self):
-        question_change_period_click = self.find_element(LocatorsMainPage.locator_question_change_period)
-        self.scroll(question_change_period_click)
-        question_change_period_click.click()
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_change_period(self):
-        answer_question_change_period = self.find_element(LocatorsMainPage.locator_answer_change_period).text
-        return answer_question_change_period
-
-    @allure.step('Нажимаем на вопрос о зарядке')
-    def click_on_question_charge(self):
-        question_charge_click = self.find_element(LocatorsMainPage.locator_question_charge)
-        self.scroll(question_charge_click)
-        question_charge_click.click()
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_charge(self):
-        answer_question_charge = self.find_element(LocatorsMainPage.locator_answer_charge).text
-        return answer_question_charge
-
-    @allure.step('Нажимаем на вопрос об отмене')
-    def click_on_question_cancel(self):
-        question_cancel_click = self.find_element(LocatorsMainPage.locator_question_cancel)
-        self.scroll(question_cancel_click)
-        question_cancel_click.click()
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_cancel(self):
-        answer_question_cancel = self.find_element(LocatorsMainPage.locator_answer_cancel).text
-        return answer_question_cancel
-
-    @allure.step('Нажимаем на вопрос о заказе за МКАДом')
-    def click_on_question_county(self):
-        question_county_click = self.find_element(LocatorsMainPage.locator_question_county)
-        self.scroll(question_county_click)
-        question_county_click.click()
-
-
-    @allure.step('Проверяем текст ответа')
-    def get_answer_question_county(self):
-        answer_question_county = self.find_element(LocatorsMainPage.locator_answer_county).text
-        return answer_question_county
+    def get_answer(self, locator):
+        answer_question = self.find_element(locator).text
+        return answer_question
 
     @allure.step('Нажимаем на логотип Яндекс')
     def click_on_ya_logo(self):
